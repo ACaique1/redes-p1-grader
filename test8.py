@@ -60,6 +60,7 @@ assert recvcmd(s1, b'QUIT').startswith(b':%s QUIT' % nick3)
 
 # O primeiro cliente deve conseguir reutilizar os nicks liberados pela saída dos outros
 s1.sendall(b'NICK %s\r\n' % nick2)
+print(b':%s NICK %s\r\n' % (nick1, nick2))
 assert recvline(s1) == b':%s NICK %s\r\n' % (nick1, nick2)
 s1.sendall(b'NICK %s\r\n' % nick3)
 assert recvline(s1) == b':%s NICK %s\r\n' % (nick2, nick3)
