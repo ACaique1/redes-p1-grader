@@ -54,7 +54,7 @@ assert recvcmd(s3, b'JOIN') == b':%s JOIN :%s\r\n' % (nick3, ch1)
 # Quando os clientes saem, os outros devem ser notificados
 s2.shutdown(socket.SHUT_WR)
 assert recvcmd(s1, b'QUIT').startswith(b':%s QUIT' % nick2)
-print(recvcmd(s1, b'QUIT').startswith(b':%s QUIT' % nick2))
+print(assert recvcmd(s1, b'QUIT').startswith(b':%s QUIT' % nick2))
 print("TESTE")
 assert recvcmd(s3, b'QUIT').startswith(b':%s QUIT' % nick2)
 s3.shutdown(socket.SHUT_WR)
